@@ -36,7 +36,7 @@
                 <div class="sidebar-wrapper">
                     <div class="logo">
                         <!--<img src="../img/logo.png" width="60px" />-->
-                        <a href="http://www.creative-tim.com" class="simple-text">
+                        <a href="#" class="simple-text">
                         Jasmine Laundry
                     </a>
                     </div>
