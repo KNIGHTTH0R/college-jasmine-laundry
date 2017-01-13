@@ -95,7 +95,8 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="header">
-                                        <a href="transaksi_tambah.php" class="btn btn-info pull-right"><i class="fa fa-plus"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#search" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-print"></i></a>
+                                        <a href="transaksi_tambah.php" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-plus"></i></a>
                                         <a href="#" data-toggle="modal" data-target="#search" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-search"></i></a>
                                         <!-- Modal Search -->
                                         <div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

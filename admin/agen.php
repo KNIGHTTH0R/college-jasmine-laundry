@@ -32,9 +32,9 @@
                 <div class="sidebar-wrapper">
                     <div class="logo">
                         <!--<img src="../img/logo.png" width="60px" />-->
-                        <a href=#" class="simple-text">
+                        <a href="#" class="simple-text">
                         Jasmine Laundry
-                    </a>
+                        </a>
                     </div>
                     <ul class="nav">
                         <li>
@@ -53,6 +53,12 @@
                             <a href="jeniscucian.php">
                                 <i class="ti-package"></i>
                                 <p>Jenis Cucian</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="admin.php">
+                                <i class="ti-user"></i>
+                                <p>Admin</p>
                             </a>
                         </li>
                     </ul>
@@ -95,7 +101,8 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="header">
-                                        <a href="agen_tambah.php" class="btn btn-info pull-right"><i class="fa fa-plus"></i></a>
+                                       <a href="#" data-toggle="modal" data-target="#search" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-print"></i></a>
+                                        <a href="agen_tambah.php" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-plus"></i></a>
                                         <a href="#" data-toggle="modal" data-target="#search" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-search"></i></a>
                                         <!-- Modal Search -->
                                         <div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

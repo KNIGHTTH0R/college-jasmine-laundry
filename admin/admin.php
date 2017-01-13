@@ -9,10 +9,6 @@
         if($_SESSION['login_role'] != 'admin')
 		    echo "<script language=javascript>document.location.href='../index.php'</script>";
 	}
-
-    if(isset($_GET['id'])) {
-        $id = $_GET['id'];
-    }
 ?>
     <!doctype html>
     <html lang="en">
@@ -38,7 +34,7 @@
                         <!--<img src="../img/logo.png" width="60px" />-->
                         <a href="#" class="simple-text">
                         Jasmine Laundry
-                    </a>
+                        </a>
                     </div>
                     <ul class="nav">
                         <li>
@@ -47,7 +43,7 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="agen.php">
                                 <i class="ti-user"></i>
                                 <p>Agen</p>
@@ -59,7 +55,7 @@
                                 <p>Jenis Cucian</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="admin.php">
                                 <i class="ti-user"></i>
                                 <p>Admin</p>
@@ -105,25 +101,24 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="header">
-                                       <a href="#" data-toggle="modal" data-target="#search" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-print"></i></a>
+                                        <a href="admin_tambah.php" class="btn btn-info pull-right"><i class="fa fa-plus"></i></a>
                                         <a href="#" data-toggle="modal" data-target="#search" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-search"></i></a>
                                         <!-- Modal Search -->
                                         <div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                             <div class="modal-dialog" role="document">
-                                                <form method="POST" action="php/transaksi_search_proses.php">
+                                                <form method="GET" action="admin.php">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title" id="myModalLabel">Masukkan No. Nota</h4>
+                                                            <h4 class="modal-title" id="myModalLabel">Masukkan Nama Admin</h4>
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="form-group">
-                                                                <label>No. Nota</label>
-                                                                <input type="text" class="form-control border-input" name="no_nota" placeholder="No. Nota" />
+                                                                <label>Nama</label>
+                                                                <input type="text" class="form-control border-input" name="nama" placeholder="Nama" />
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <input type="hidden" name="id" value="<?php echo $id;?>">
                                                             <button type="submit" class="btn btn-primary btn-fill">Search</button>
                                                             <button type="button" class="btn btn-default btn-fill" data-dismiss="modal">Close</button>
                                                         </div>
@@ -132,57 +127,39 @@
                                             </div>
                                         </div>
                                         <!-- End Modal -->
-                                        <a href="agen.php" class="btn btn-info pull-right" style="margin-right: 8px;"  ><i class="fa fa-arrow-left"></i></a>                                        
-                                        <h4 class="title">Data Transaksi</h4>
-                                        <p class="category">List dari semua transaksi per agen</p>
+                                        <?php
+                                            if(isset($_GET['nama'])){
+                                        ?>
+                                            <a href="admin.php" class="btn btn-info pull-right" style="margin-right: 8px;"  ><i class="fa fa-arrow-left"></i></a>
+                                        <?php
+                                            }
+                                        ?>
+                                        <h4 class="title">Data Admin</h4>
+                                        <p class="category">List dari semua admin yang terdaftar</p>
                                     </div>
                                     <div class="content table-responsive table-full-width">
                                         <table class="table table-striped">
                                             <thead>
-                                                <th>No Nota</th>
-                                                <th>Pelanggan</th>
-                                                <th>Masuk</th>
-                                                <th>Selesai</th>
-                                                <th>Total</th>
-                                                <th>Status</th>
+                                                <th>ID</th>
+                                                <th>Nama</th>
+                                                <th>Actions</th>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                    if(isset($_GET['no_nota'])){
-                                                        $strQuery = "SELECT n.nota_id, p.pelanggan_nama, n.nota_tgl_masuk, n.nota_tgl_selesai, n.nota_status
-                                                        FROM nota n
-                                                        INNER JOIN pelanggan p ON n.pelanggan_id = p.pelanggan_id
-                                                        INNER JOIN agen a ON p.agen_id = a.agen_id
-                                                        WHERE p.agen_id = $id AND n.nota_id = $_GET[no_nota] AND n.nota_deleted = 'false'
-                                                        ORDER BY n.nota_tgl_masuk DESC";
+                                                    if(isset($_GET['nama'])){
+                                                        $strQuery = "SELECT admin_id, admin_nama, login_id FROM admin WHERE admin_nama LIKE '%$_GET[nama]%' ORDER BY admin_id DESC";
                                                     }else {
-                                                        $strQuery = "SELECT n.nota_id, p.pelanggan_nama, n.nota_tgl_masuk, n.nota_tgl_selesai, n.nota_status
-                                                        FROM nota n
-                                                        INNER JOIN pelanggan p ON n.pelanggan_id = p.pelanggan_id
-                                                        INNER JOIN agen a ON p.agen_id = a.agen_id
-                                                        WHERE p.agen_id = $id AND n.nota_deleted = 'false'
-                                                        ORDER BY n.nota_tgl_masuk DESC";
+                                                        $strQuery = "SELECT admin_id, admin_nama, login_id FROM admin ORDER BY admin_id DESC";
                                                     }
                                                     $query = mysqli_query($connection, $strQuery);
                                                     $i = 0;
                                                     while($result = mysqli_fetch_assoc($query)){
                                                         echo "<tr>";
-                                                       echo "<td>$result[nota_id]</td>";
-                                                        echo "<td>$result[pelanggan_nama]</td>";
-                                                        echo "<td>$result[nota_tgl_masuk]</td>";
-                                                        echo "<td>$result[nota_tgl_selesai]</td>";
-                                                        $strSubQuery = "SELECT njc.nota_jeniscucian_id, jc.jeniscucian_nama, njc.nota_jeniscucian_jumlah, njc.nota_jeniscucian_subtotal
-                                                        FROM nota_jeniscucian njc
-                                                        INNER JOIN jeniscucian jc ON njc.jeniscucian_id = jc.jeniscucian_id
-                                                        INNER JOIN nota n ON njc.nota_id = n.nota_id
-                                                        WHERE njc.nota_id = $result[nota_id] AND n.nota_deleted = 'false'";
-                                                        $subQuery = mysqli_query($connection, $strSubQuery);
-                                                        $total = 0;
-                                                        while($subResult = mysqli_fetch_assoc($subQuery)){
-                                                            $total += $subResult['nota_jeniscucian_subtotal'];
-                                                        }
-                                                        echo "<td>$total</td>";
-                                                        echo "<td>$result[nota_status]</td>";
+                                                        echo "<td>$result[admin_id]</td>";
+                                                        echo "<td>$result[admin_nama]</td>";
+                                                        echo "<td><a href='admin_edit.php?id=$result[admin_id]'>Edit</a>";
+                                                        echo "&nbsp;&nbsp;&nbsp;";
+                                                        echo "<a href=# data-toggle=modal data-target=#delete$i>Delete</a></td>";
                                                         echo "</tr>";
                                                 ?>
                                                     <!-- Modal Delete -->
@@ -194,7 +171,7 @@
                                                                     <h4 class="modal-title" id="myModalLabel">Apakah Anda Yakin ?</h4>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="../php/agen_delete.php?id=<?php echo " $result[agen_id] ";?>" class="btn btn-primary btn-fill">Yes</a>
+                                                                    <a href="php/admin_delete_proses.php?id=<?php echo " $result[login_id] ";?>" class="btn btn-primary btn-fill">Yes</a>
                                                                     <button type="button" class="btn btn-default btn-fill" data-dismiss="modal">No</button>
                                                                 </div>
                                                             </div>

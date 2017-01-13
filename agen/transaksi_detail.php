@@ -117,6 +117,7 @@
                                         <?php
                                             }
                                         ?>
+                                         <a href="#" data-toggle="modal" data-target="#search" class="btn btn-info btn-fill pull-right" style="margin-right: 8px;"><i class="fa fa-print"></i></a>
                                         <h4 class="title">Data Transaksi</h4>
                                         <p class="category">Detail data transaksi</p>
                                     </div>

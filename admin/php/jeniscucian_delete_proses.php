@@ -6,8 +6,9 @@
 	$query = mysqli_query($connection, $strQuery);
 	if($query){
 		echo "<script language=javascript>document.location.href='../jeniscucian.php'</script>";
-		mysql_close();
+		mysqli_close($connection);
 	}else{
 		echo "<script language=javascript>document.location.href='../jeniscucian.php'</script>";
+		mysqli_close($connection);
 	}
 ?>

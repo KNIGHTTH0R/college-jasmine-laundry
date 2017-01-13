@@ -16,13 +16,13 @@
         $nama = "";
         $username = "";
         $password = "";
-        $strQuery = "SELECT a.agen_id, a.agen_nama, l.login_id, l.login_username, l.login_password FROM agen a INNER JOIN login l ON a.login_id = l.login_id WHERE agen_id = '$id' AND agen_deleted = 'false'";
+        $strQuery = "SELECT a.admin_id, a.admin_nama, l.login_id, l.login_username, l.login_password FROM admin a INNER JOIN login l ON a.login_id = l.login_id WHERE admin_id = '$id'";
         $query = mysqli_query($connection, $strQuery);
         if($query){
             $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
-            $id = $result['agen_id'];
+            $id = $result['admin_id'];
             $login_id = $result['login_id'];
-            $nama = $result['agen_nama'];
+            $nama = $result['admin_nama'];
             $username = $result['login_username'];
             $password = $result['login_password'];
         }
@@ -61,7 +61,7 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="agen.php">
                                 <i class="ti-user"></i>
                                 <p>Agen</p>
@@ -73,7 +73,7 @@
                                 <p>Jenis Cucian</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="admin.php">
                                 <i class="ti-user"></i>
                                 <p>Admin</p>
@@ -92,7 +92,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                            <a class="navbar-brand" href="#">Agen</a>
+                            <a class="navbar-brand" href="#">Admin</a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
@@ -114,13 +114,13 @@
                     </div>
                 </nav>
                 <div class="content">
-                    <form method="POST" action="php/agen_edit_proses.php">
+                    <form method="POST" action="php/admin_edit_proses.php">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="card">
                                         <div class="header">
-                                            <h4 class="title">Edit Agen</h4>
+                                            <h4 class="title">Edit Admin</h4>
                                         </div>
                                         <div class="content">
                                             <div class="row">

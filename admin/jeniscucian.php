@@ -55,6 +55,12 @@
                                 <p>Jenis Cucian</p>
                             </a>
                         </li>
+                        <li>
+                            <a href="admin.php">
+                                <i class="ti-user"></i>
+                                <p>Admin</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

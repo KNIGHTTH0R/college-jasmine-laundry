@@ -9,24 +9,6 @@
         if($_SESSION['login_role'] != 'admin')
 		    echo "<script language=javascript>document.location.href='../index.php'</script>";
 	}
-
-    if(isset($_GET['id'])) {
-        $id = $_GET['id'];
-        $login_id = "";
-        $nama = "";
-        $username = "";
-        $password = "";
-        $strQuery = "SELECT a.agen_id, a.agen_nama, l.login_id, l.login_username, l.login_password FROM agen a INNER JOIN login l ON a.login_id = l.login_id WHERE agen_id = '$id' AND agen_deleted = 'false'";
-        $query = mysqli_query($connection, $strQuery);
-        if($query){
-            $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
-            $id = $result['agen_id'];
-            $login_id = $result['login_id'];
-            $nama = $result['agen_nama'];
-            $username = $result['login_username'];
-            $password = $result['login_password'];
-        }
-    }
 ?>
     <!doctype html>
     <html lang="en">
@@ -61,7 +43,7 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="agen.php">
                                 <i class="ti-user"></i>
                                 <p>Agen</p>
@@ -73,7 +55,7 @@
                                 <p>Jenis Cucian</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="admin.php">
                                 <i class="ti-user"></i>
                                 <p>Admin</p>
@@ -92,7 +74,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                            <a class="navbar-brand" href="#">Agen</a>
+                            <a class="navbar-brand" href="#">Admin</a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
@@ -114,20 +96,20 @@
                     </div>
                 </nav>
                 <div class="content">
-                    <form method="POST" action="php/agen_edit_proses.php">
+                    <form method="POST" action="php/admin_tambah_proses.php">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="card">
                                         <div class="header">
-                                            <h4 class="title">Edit Agen</h4>
+                                            <h4 class="title">Tambah Admin</h4>
                                         </div>
                                         <div class="content">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>Nama</label>
-                                                        <input type="text" class="form-control border-input" name="nama" placeholder="Nama" value="<?php echo $nama;?>"/>
+                                                        <input type="text" class="form-control border-input" name="nama" placeholder="Nama" />
                                                     </div>
                                                 </div>
                                                 <div class="text-center" style="margin-bottom: 34px;">
@@ -147,18 +129,16 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>Username</label>
-                                                        <input type="text" class="form-control border-input" name="username" placeholder="Username" value="<?php echo $username;?>"/>
+                                                        <input type="text" class="form-control border-input" name="username" placeholder="Username" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12" style="margin-bottom: 34px;">
                                                     <div class="form-group">
                                                         <label>Password</label>
-                                                        <input type="password" class="form-control border-input" name="password" placeholder="Biarkan kosong jika kamu tidak ingin mengganti passwordnya"/>
+                                                        <input type="password" class="form-control border-input" name="password" placeholder="Password" />
                                                     </div>
                                                 </div>
                                                 <div class="text-center" style="margin-bottom: 34px;">
-                                                    <input type="hidden" name="id" value="<?php echo $id;?>"/>
-                                                    <input type="hidden" name="login_id" value="<?php echo $login_id;?>"/>
                                                     <button type="submit" class="btn btn-info btn-fill btn-wd">Submit Data</button>
                                                 </div>
                                                 <div class="clearfix"></div>
