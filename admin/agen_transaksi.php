@@ -105,12 +105,12 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="header">
-                                       <a href="#" data-toggle="modal" data-target="#search" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-print"></i></a>
+                                       <a href="php/transaksi_cetak_agen.php?id=<?php echo $_GET['id'];?>" target="_blank" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-print"></i></a>
                                         <a href="#" data-toggle="modal" data-target="#search" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-search"></i></a>
                                         <!-- Modal Search -->
                                         <div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                             <div class="modal-dialog" role="document">
-                                                <form method="POST" action="php/transaksi_search_proses.php">
+                                                <form method="GET" action="agen_transaksi.php">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -150,14 +150,14 @@
                                                 <?php
                                                     if(isset($_GET['no_nota'])){
                                                         $strQuery = "SELECT n.nota_id, p.pelanggan_nama, n.nota_tgl_masuk, n.nota_tgl_selesai, n.nota_status
-                                                        FROM nota n
+                                                        FROM transaksi n
                                                         INNER JOIN pelanggan p ON n.pelanggan_id = p.pelanggan_id
                                                         INNER JOIN agen a ON p.agen_id = a.agen_id
                                                         WHERE p.agen_id = $id AND n.nota_id = $_GET[no_nota] AND n.nota_deleted = 'false'
                                                         ORDER BY n.nota_tgl_masuk DESC";
                                                     }else {
                                                         $strQuery = "SELECT n.nota_id, p.pelanggan_nama, n.nota_tgl_masuk, n.nota_tgl_selesai, n.nota_status
-                                                        FROM nota n
+                                                        FROM transaksi n
                                                         INNER JOIN pelanggan p ON n.pelanggan_id = p.pelanggan_id
                                                         INNER JOIN agen a ON p.agen_id = a.agen_id
                                                         WHERE p.agen_id = $id AND n.nota_deleted = 'false'
@@ -174,7 +174,7 @@
                                                         $strSubQuery = "SELECT njc.nota_jeniscucian_id, jc.jeniscucian_nama, njc.nota_jeniscucian_jumlah, njc.nota_jeniscucian_subtotal
                                                         FROM nota_jeniscucian njc
                                                         INNER JOIN jeniscucian jc ON njc.jeniscucian_id = jc.jeniscucian_id
-                                                        INNER JOIN nota n ON njc.nota_id = n.nota_id
+                                                        INNER JOIN transaksi n ON njc.nota_id = n.nota_id
                                                         WHERE njc.nota_id = $result[nota_id] AND n.nota_deleted = 'false'";
                                                         $subQuery = mysqli_query($connection, $strSubQuery);
                                                         $total = 0;

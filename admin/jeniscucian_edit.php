@@ -101,7 +101,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="../php/logout.php">
                                         <i class="fa fa-sign-out"></i>
                                     </a>
                                 </li>

@@ -180,7 +180,7 @@
                                                 <div class="numbers">
                                                     <p>Transaksi</p>
                                                     <?php
-                                                    $strQuery = "SELECT nota_id FROM nota";
+                                                    $strQuery = "SELECT nota_id FROM transaksi";
                                                     $query = mysqli_query($connection, $strQuery);
                                                     echo mysqli_num_rows($query); 
                                                 ?>

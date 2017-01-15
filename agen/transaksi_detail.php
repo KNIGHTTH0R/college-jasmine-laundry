@@ -101,7 +101,7 @@
                                     <div class="header">
                                         <?php
                                             $strQuery = "SELECT n.nota_id, n.nota_status
-                                                    FROM nota n
+                                                    FROM transaksi n
                                                     INNER JOIN pelanggan p ON n.pelanggan_id = p.pelanggan_id
                                                     INNER JOIN agen a ON p.agen_id = a.agen_id
                                                     WHERE p.agen_id = $_SESSION[agen_id] AND n.nota_id = $no_nota AND n.nota_deleted = 'false'";
@@ -117,7 +117,7 @@
                                         <?php
                                             }
                                         ?>
-                                         <a href="#" data-toggle="modal" data-target="#search" class="btn btn-info btn-fill pull-right" style="margin-right: 8px;"><i class="fa fa-print"></i></a>
+                                        <a href="php/transaksi_cetak_nota.php?no_nota=<?php echo $no_nota;?>" target="_blank" class="btn btn-info btn-fill pull-right" style="margin-right: 8px;"><i class="fa fa-print"></i></a>
                                         <h4 class="title">Data Transaksi</h4>
                                         <p class="category">Detail data transaksi</p>
                                     </div>
@@ -135,7 +135,7 @@
                                             <tbody>
                                                 <?php
                                                     $strQuery = "SELECT n.nota_id, p.pelanggan_nama, n.nota_tgl_masuk, n.nota_tgl_selesai, n.nota_status
-                                                    FROM nota n
+                                                    FROM transaksi n
                                                     INNER JOIN pelanggan p ON n.pelanggan_id = p.pelanggan_id
                                                     INNER JOIN agen a ON p.agen_id = a.agen_id
                                                     WHERE p.agen_id = $_SESSION[agen_id] AND n.nota_id = $no_nota AND n.nota_deleted = 'false'";
@@ -150,7 +150,7 @@
                                                         $strSubQuery = "SELECT njc.nota_jeniscucian_id, jc.jeniscucian_nama, njc.nota_jeniscucian_jumlah, njc.nota_jeniscucian_subtotal
                                                         FROM nota_jeniscucian njc
                                                         INNER JOIN jeniscucian jc ON njc.jeniscucian_id = jc.jeniscucian_id
-                                                        INNER JOIN nota n ON njc.nota_id = n.nota_id
+                                                        INNER JOIN transaksi n ON njc.nota_id = n.nota_id
                                                         WHERE njc.nota_id = $result[nota_id] AND n.nota_deleted = 'false'";
                                                         $subQuery = mysqli_query($connection, $strSubQuery);
                                                         $total = 0;
@@ -200,22 +200,24 @@
                                         <table class="table table-striped">
                                             <thead>
                                                 <th>Jenis Cucian</th>
+                                                <th>Harga</th>
                                                 <th>Jumlah</th>
                                                 <th>Subtotal</th>
                                                 <th>Actions</th>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                    $strQuery = "SELECT njc.nota_jeniscucian_id, jc.jeniscucian_nama, njc.nota_jeniscucian_jumlah, njc.nota_jeniscucian_subtotal
+                                                    $strQuery = "SELECT njc.nota_jeniscucian_id, jc.jeniscucian_nama, jc.jeniscucian_harga, njc.nota_jeniscucian_jumlah, njc.nota_jeniscucian_subtotal
                                                     FROM nota_jeniscucian njc
                                                     INNER JOIN jeniscucian jc ON njc.jeniscucian_id = jc.jeniscucian_id
-                                                    INNER JOIN nota n ON njc.nota_id = n.nota_id
+                                                    INNER JOIN transaksi n ON njc.nota_id = n.nota_id
                                                     WHERE njc.nota_id = $no_nota AND n.nota_deleted = 'false'";
                                                     $query = mysqli_query($connection, $strQuery);
                                                     $i = 0;
                                                     while($result = mysqli_fetch_assoc($query)){
                                                         echo "<tr>";
                                                         echo "<td>$result[jeniscucian_nama]</td>";
+                                                        echo "<td>$result[jeniscucian_harga]</td>";
                                                         echo "<td>$result[nota_jeniscucian_jumlah]</td>";
                                                         echo "<td>$result[nota_jeniscucian_subtotal]</td>";
                                                         echo "<td><a href=# data-toggle=modal data-target=#deletecucian$i>Delete</a></td>";

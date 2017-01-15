@@ -18,9 +18,10 @@
 		} else {
 			echo "<script language=javascript>document.location.href='../transaksi_detail.php?no_nota=$no_nota'</script>";
 		}
-		mysqli_close($connection);
 	}else{
-		echo "<script language=javascript>document.location.href='../transaksi.php'</script>";
-		mysqli_close($connection);
+		echo "<script language=javascript>alert('Terjadi Kesalahan Saat Menambah Data Cucian');</script>";
+		echo "<script language=javascript>document.location.href='../transaksi_detail.php?no_nota=$no_nota'</script>";
 	}
+	
+	mysqli_close($connection);
 ?>

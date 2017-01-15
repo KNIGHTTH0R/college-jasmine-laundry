@@ -126,13 +126,13 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>Tanggal Masuk</label>
-                                                        <input type="date" class="form-control border-input" name="tgl_masuk" placeholder="Tanggal Masuk" />
+                                                        <input type="date" class="form-control border-input" name="tgl_masuk" placeholder="Tanggal Masuk" value="<?php echo date("Y-m-d");?>"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12" style="margin-bottom: 34px;">
                                                     <div class="form-group">
                                                         <label>Tanggal Selesai</label>
-                                                        <input type="date" class="form-control border-input" name="tgl_selesai" placeholder="Tanggal Selesai" />
+                                                        <input type="date" class="form-control border-input" name="tgl_selesai" placeholder="Tanggal Selesai" value="<?php echo date("Y-m-d");?>"/>
                                                     </div>
                                                 </div>
                                                 <div class="text-center" style="margin-bottom: 34px;">

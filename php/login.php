@@ -18,11 +18,11 @@
 			$login_id = $result['login_id'];
 			$login_role = $result['login_role'];
 			if($login_role === "admin") {
-				$strQuery = "SELECT * FROM admin WHERE login_id = '$login_id'";
+				$strQuery = "SELECT * FROM admin WHERE admin_id = '$login_id'";
 				$query = mysqli_query($connection, $strQuery);
 				if($query) {
-					$thereIsAnAgen = mysqli_num_rows($query);
-					if($thereIsAnAgen == 0){
+					$thereIsAnAdmin = mysqli_num_rows($query);
+					if($thereIsAnAdmin == 0){
 						echo "<script language=javascript>alert('Data Admin tidak Ditemukan');</script>";
 						echo "<script language=javascript>document.location.href='../index.php'</script>";
 						mysqli_close($connection);
@@ -34,11 +34,11 @@
 						echo "<script language=javascript>document.location.href='../admin/dashboard.php'</script>";
 					}
 				}else {
-					echo "<script language=javascript>alert('Terjadi Kesalahan!');</script>";
+					echo "<script language=javascript>alert('Terjadi Kesalahan Saat Login');</script>";
 					echo "<script language=javascript>document.location.href='../index.php'</script>";
 				}
 			} else if($login_role === "agen") {
-				$strQuery = "SELECT * FROM agen WHERE login_id = '$login_id'";
+				$strQuery = "SELECT * FROM agen WHERE agen_id = '$login_id'";
 				$query = mysqli_query($connection, $strQuery);
 				if($query) {
 					$thereIsAnAgen = mysqli_num_rows($query);
@@ -54,7 +54,7 @@
 						echo "<script language=javascript>document.location.href='../agen/dashboard.php'</script>";
 					}
 				}else {
-					echo "<script language=javascript>alert('Terjadi Kesalahan!');</script>";
+					echo "<script language=javascript>alert('Terjadi Kesalahan Saat Login');</script>";
 					echo "<script language=javascript>document.location.href='../index.php'</script>";
 				}
 			}

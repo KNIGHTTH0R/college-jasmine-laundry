@@ -101,13 +101,13 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="header">
-                                       <a href="#" data-toggle="modal" data-target="#search" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-print"></i></a>
+                                       <a href="php/transaksi_cetak.php" target="_blank" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-print"></i></a>
                                         <a href="agen_tambah.php" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-plus"></i></a>
                                         <a href="#" data-toggle="modal" data-target="#search" class="btn btn-info pull-right" style="margin-right: 8px;"><i class="fa fa-search"></i></a>
                                         <!-- Modal Search -->
                                         <div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                             <div class="modal-dialog" role="document">
-                                                <form method="POST" action="php/agen_search_proses.php">
+                                                <form method="GET" action="agen.php">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

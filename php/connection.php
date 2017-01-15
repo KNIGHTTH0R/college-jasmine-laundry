@@ -3,8 +3,9 @@
     // $host = "localhost";
     // $user = "root";
     // $pass = "";
-    // $database = "db_laundry_jasmine";
+    // $database = "db_jasmine_laundry";
 
+    // Azure
     $host = "ap-cdbr-azure-southeast-b.cloudapp.net";
     $user = "b11e7dbec83707";
     $pass = "efd5017c";

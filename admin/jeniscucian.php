@@ -87,7 +87,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="../php/logout.php">
                                         <i class="fa fa-sign-out"></i>
                                     </a>
                                 </li>
@@ -106,7 +106,7 @@
                                         <!-- Modal Search -->
                                         <div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                             <div class="modal-dialog" role="document">
-                                                <form method="POST" action="php/jeniscucian_search_proses.php">
+                                                <form method="GET" action="jeniscucian.php">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

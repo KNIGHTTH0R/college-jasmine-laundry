@@ -147,9 +147,9 @@
                                             <tbody>
                                                 <?php
                                                     if(isset($_GET['nama'])){
-                                                        $strQuery = "SELECT admin_id, admin_nama, login_id FROM admin WHERE admin_nama LIKE '%$_GET[nama]%' ORDER BY admin_id DESC";
+                                                        $strQuery = "SELECT admin_id, admin_nama FROM admin WHERE admin_nama LIKE '%$_GET[nama]%' AND admin_id != $_SESSION[admin_id] ORDER BY admin_id DESC";
                                                     }else {
-                                                        $strQuery = "SELECT admin_id, admin_nama, login_id FROM admin ORDER BY admin_id DESC";
+                                                        $strQuery = "SELECT admin_id, admin_nama FROM admin WHERE admin_id != $_SESSION[admin_id] ORDER BY admin_id DESC";
                                                     }
                                                     $query = mysqli_query($connection, $strQuery);
                                                     $i = 0;
@@ -171,7 +171,7 @@
                                                                     <h4 class="modal-title" id="myModalLabel">Apakah Anda Yakin ?</h4>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <a href="php/admin_delete_proses.php?id=<?php echo " $result[login_id] ";?>" class="btn btn-primary btn-fill">Yes</a>
+                                                                    <a href="php/admin_delete_proses.php?id=<?php echo " $result[admin_id] ";?>" class="btn btn-primary btn-fill">Yes</a>
                                                                     <button type="button" class="btn btn-default btn-fill" data-dismiss="modal">No</button>
                                                                 </div>
                                                             </div>

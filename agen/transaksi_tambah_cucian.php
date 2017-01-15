@@ -112,10 +112,10 @@
                                                         <label>Jenis Cucian</label>
                                                         <select class="form-control border-input" name="jeniscucian_id">
                                                             <?php
-                                                                $strQuery = "SELECT jeniscucian_id, jeniscucian_nama FROM jeniscucian WHERE jeniscucian_deleted = 'false'";
+                                                                $strQuery = "SELECT jeniscucian_id, jeniscucian_nama, jeniscucian_harga FROM jeniscucian WHERE jeniscucian_deleted = 'false'";
                                                                 $query = mysqli_query($connection, $strQuery);
                                                                 while($result = mysqli_fetch_assoc($query)){
-                                                                    echo "<option value=$result[jeniscucian_id]>$result[jeniscucian_nama]</option>";
+                                                                    echo "<option value=$result[jeniscucian_id]>$result[jeniscucian_nama] - Rp. $result[jeniscucian_harga]</option>";
                                                                 }
                                                             ?>
                                                         </select>

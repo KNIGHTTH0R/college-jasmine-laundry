@@ -100,7 +100,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <?php
-                                    $strQuery = "SELECT a.admin_id, a.admin_nama, l.login_id, l.login_username, l.login_password FROM admin a INNER JOIN login l ON a.login_id = l.login_id WHERE admin_id = '$_SESSION[admin_id]'";
+                                    $strQuery = "SELECT a.admin_id, a.admin_nama, l.login_id, l.login_username, l.login_password FROM admin a INNER JOIN login l ON a.admin_id = l.login_id WHERE admin_id = '$_SESSION[admin_id]'";
                                     $query = mysqli_query($connection, $strQuery);                                    
 						            $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
                                 ?>

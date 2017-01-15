@@ -16,7 +16,7 @@
         $nama = "";
         $username = "";
         $password = "";
-        $strQuery = "SELECT a.agen_id, a.agen_nama, l.login_id, l.login_username, l.login_password FROM agen a INNER JOIN login l ON a.login_id = l.login_id WHERE agen_id = '$id' AND agen_deleted = 'false'";
+        $strQuery = "SELECT a.agen_id, a.agen_nama, l.login_id, l.login_username, l.login_password FROM agen a INNER JOIN login l ON a.agen_id = l.login_id WHERE agen_id = '$id' AND agen_deleted = 'false'";
         $query = mysqli_query($connection, $strQuery);
         if($query){
             $result = mysqli_fetch_array($query, MYSQLI_ASSOC);

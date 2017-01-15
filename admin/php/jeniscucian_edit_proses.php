@@ -6,11 +6,10 @@
 			
 	$strQuery = "UPDATE jeniscucian SET jeniscucian_nama = '$namacucian', jeniscucian_harga = '$harga' WHERE jeniscucian_id = $id";
 	$query = mysqli_query($connection, $strQuery);
-	if($query){			
-		echo "<script language=javascript>document.location.href='../jeniscucian.php'</script>";
-		mysqli_close($connection);
-	}else{
-		echo "<script language=javascript>document.location.href='../jeniscucian.php'</script>";
-		mysqli_close($connection);
+	if(!$query){			
+		echo "<script language=javascript>alert('Terjadi Kesalahan Saat Mengupdate Data Jenis Cucian');</script>";
 	}
+	
+	echo "<script language=javascript>document.location.href='../jeniscucian.php'</script>";
+	mysqli_close($connection);
 ?>

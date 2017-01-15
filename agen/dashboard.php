@@ -128,7 +128,7 @@
                                                 <div class="numbers">
                                                     <p>Transaksi</p>
                                                     <?php
-                                                    $strQuery = "SELECT n.nota_id FROM nota n INNER JOIN pelanggan p ON n.pelanggan_id = p.pelanggan_id WHERE p.agen_id = $_SESSION[agen_id] AND n.nota_deleted = 'false'";
+                                                    $strQuery = "SELECT n.nota_id FROM transaksi n INNER JOIN pelanggan p ON n.pelanggan_id = p.pelanggan_id WHERE p.agen_id = $_SESSION[agen_id] AND n.nota_deleted = 'false'";
                                                     $query = mysqli_query($connection, $strQuery);
                                                     echo mysqli_num_rows($query); 
                                                 ?>

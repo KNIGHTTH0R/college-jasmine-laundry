@@ -8,11 +8,10 @@
 	$strQuery = "INSERT INTO pelanggan(pelanggan_nama, pelanggan_alamat, pelanggan_notelp, agen_id) 
 	VALUES('$nama', '$alamat', '$no_telp', '$agen_id')";
 	$query = mysqli_query($connection, $strQuery);
-	if($query){
-		echo "<script language=javascript>document.location.href='../pelanggan.php'</script>";
-		mysqli_close($connection);
-	}else{
-		echo "<script language=javascript>document.location.href='../pelanggan.php'</script>";
-		mysqli_close($connection);
+	if(!$query){
+		echo "<script language=javascript>alert('Terjadi Kesalahan Saat Menambah Data Pelanggan');</script>";
 	}
+	
+	echo "<script language=javascript>document.location.href='../pelanggan.php'</script>";
+	mysqli_close($connection);
 ?>

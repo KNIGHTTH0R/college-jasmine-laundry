@@ -18,8 +18,8 @@
         $tgl_keluar = "";
         $total = 0;
         $status = "";
-        $strQuery = "SELECT n.nota_id, p.pelanggan_id, p.pelanggan_nama, n.nota_tgl_masuk, n.nota_tgl_selesai, n.nota_total, n.nota_status
-                                                    FROM nota n
+        $strQuery = "SELECT n.nota_id, p.pelanggan_id, p.pelanggan_nama, n.nota_tgl_masuk, n.nota_tgl_selesai, n.nota_status
+                                                    FROM transaksi n
                                                     INNER JOIN pelanggan p ON n.pelanggan_id = p.pelanggan_id
                                                     INNER JOIN agen a ON p.agen_id = a.agen_id
                                                     WHERE p.agen_id = $_SESSION[agen_id] AND n.nota_id = $no_nota AND n.nota_deleted = 'false'";
@@ -31,7 +31,6 @@
             $pelanggan_nama = $result['pelanggan_nama'];
             $tgl_masuk = $result['nota_tgl_masuk'];
             $tgl_selesai = $result['nota_tgl_selesai'];
-            $total = $result['nota_total'];
             $status = $result['nota_status'];
         }
     }
