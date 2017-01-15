@@ -10,7 +10,7 @@
     $query = mysqli_query($connection, $strQuery);
     $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
 ?>
-	<html xmlns="http://www.w3.org/1999/xhtml"> <!-- Bagian halaman HTML yang akan konvert -->
+	<html xmlns="http://www.w3.org/1999/xhtml"> <!-- Bagian halaman HTML yang akan convert -->
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	<title>Jasmine Laundry</title>
@@ -76,7 +76,7 @@
         ?>
 		</body>
 	</html>
-	<!-- Akhir halaman HTML yang akan di konvert -->
+	<!-- Akhir halaman HTML yang akan di convert -->
 	
 	<?php
 		$filename="".$result[nota_id].".pdf";

@@ -5,8 +5,8 @@
 	$password = $_POST['password'];
 	$encPassword = md5($password);
 	
-	mysqli_begin_transaction($connection, MYSQLI_TRANS_START_READ_WRITE);
-	mysqli_autocommit($connection, FALSE);
+	mysqli_query($connection, "SET AUTOCOMMIT=0");
+	mysqli_query($connection, "START TRANSACTION");
 
 	$strQuery = "INSERT INTO login VALUES(null, '$username', '$encPassword', '2')";
 	$query = mysqli_query($connection, $strQuery);
@@ -15,18 +15,18 @@
 		$strQuery = "INSERT INTO agen VALUES($login_id, '$nama', 'false')";
 		$query = mysqli_query($connection, $strQuery);
 		if($query){
-			mysqli_commit($connection);	
+			mysqli_query($connection, "COMMIT");
 		}else {
-			mysqli_rollback($connection);
+			mysqli_query($connection, "ROLLBACK");
 			echo "<script language=javascript>alert('Terjadi Kesalahan Saat Menambahkan Data Agen');</script>";
 		}
 	}else{
-		mysqli_rollback($connection);
+		mysqli_query($connection, "ROLLBACK");
 		echo "<script language=javascript>alert('Terjadi Kesalahan Saat Menambahkan Data Login Agen');</script>";
 	}
 	
 	
-	mysqli_autocommit($connection, TRUE);
+	mysql_query("SET AUTOCOMMIT=1");
 	echo "<script language=javascript>document.location.href='../agen.php'</script>";
 	mysqli_close($connection);
 ?>

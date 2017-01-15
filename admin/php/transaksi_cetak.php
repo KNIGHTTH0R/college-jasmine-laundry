@@ -6,7 +6,7 @@
                         INNER JOIN pelanggan p ON n.pelanggan_id = p.pelanggan_id
                         INNER JOIN agen a ON p.agen_id = a.agen_id
                         WHERE n.nota_deleted = 'false'
-                        ORDER BY n.nota_tgl_masuk DESC";
+                        ORDER BY a.agen_id ASC";
     $query = mysqli_query($connection, $strQuery);
     $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
 ?>
@@ -23,6 +23,7 @@
         <br/>
         <table border="1">
             <tr>
+                <td width="65"><b>Agen</b></td>
                 <td width="65"><b>No Nota</b></td>
                 <td width="85"><b>Pelanggan</b></td>
                 <td width="85"><b>Masuk</b></td>
@@ -36,6 +37,7 @@
                 $query = mysqli_query($connection, $strQuery);
                 while($result = mysqli_fetch_assoc($query)){
                     echo "<tr>";
+                        echo "<td>$result[agen_nama]</td>";
                         echo "<td>$result[nota_id]</td>";
                         echo "<td>$result[pelanggan_nama]</td>";
                         echo "<td>$result[nota_tgl_masuk]</td>";
@@ -78,7 +80,7 @@
 		 require_once('../../html2pdf/html2pdf.class.php');
 		 try
 		 {
-		  $html2pdf = new HTML2PDF('P','A4','en', false, 'ISO-8859-15',array(30, 0, 20, 0));
+		  $html2pdf = new HTML2PDF('L','A4','en', false, 'ISO-8859-15',array(30, 0, 20, 0));
 		  $html2pdf->setDefaultFont('Arial');
 		  $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
 		  $html2pdf->Output($filename);
