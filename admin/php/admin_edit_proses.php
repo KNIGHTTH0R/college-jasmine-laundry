@@ -30,7 +30,7 @@
 		echo "<script language=javascript>alert('Terjadi Kesalahan Saat Mengupdate Data Admin');</script>";
 	}
 	
-	mysql_query("SET AUTOCOMMIT=1");
+	mysqli_query($connection, "SET AUTOCOMMIT=1");
 	echo "<script language=javascript>document.location.href='../admin.php'</script>";
 	mysqli_close($connection);
 ?>

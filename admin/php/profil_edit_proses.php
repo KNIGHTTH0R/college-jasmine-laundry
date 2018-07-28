@@ -33,7 +33,7 @@
 		echo "<script language=javascript>alert('Terjadi Kesalahan Saat Mengupdate Data Profil');</script>";
 	}
 
-	mysql_query("SET AUTOCOMMIT=1");
+	mysqli_query($connection, "SET AUTOCOMMIT=1");
 	echo "<script language=javascript>document.location.href='../profil_edit.php'</script>";
 	mysqli_close($connection);
 ?>

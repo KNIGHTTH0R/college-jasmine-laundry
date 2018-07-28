@@ -6,6 +6,7 @@
 	$encPassword = md5($password);
 	
 	$strQuery = "SELECT * FROM login WHERE login_username = '$username' AND login_password='$encPassword'";
+	
 	$query = mysqli_query($connection, $strQuery);
 	if($query){
 		$thereIsAUser = mysqli_num_rows($query);
