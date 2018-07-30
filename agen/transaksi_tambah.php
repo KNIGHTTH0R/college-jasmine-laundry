@@ -2,12 +2,12 @@
 	require "../php/connection.php";
     session_start();
     if(!isset($_SESSION['login_role'])){
-		echo "<script language=javascript>document.location.href='../index.php'</script>";
+		echo "<script language=javascript>document.location.href='../login.php'</script>";
 	}
 
     if(isset($_SESSION['login_role'])){
         if($_SESSION['login_role'] != 'agen')
-		    echo "<script language=javascript>document.location.href='../index.php'</script>";
+		    echo "<script language=javascript>document.location.href='../login.php'</script>";
 	}
 ?>
     <!doctype html>
@@ -105,7 +105,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>No. Nota</label>
-                                                        <input type="text" class="form-control border-input" name="no_nota" placeholder="No. Nota" />
+                                                        <input type="text" class="form-control border-input" name="no_nota" placeholder="No. Nota" value="<?php echo mysqli_fetch_array(mysqli_query($connection, "SELECT MAX(nota_id) + 1 from transaksi"), MYSQLI_NUM)[0]?>" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">

@@ -2,12 +2,12 @@
 	require "../php/connection.php";
     session_start();
     if(!isset($_SESSION['login_role'])){
-		echo "<script language=javascript>document.location.href='../index.php'</script>";
+		echo "<script language=javascript>document.location.href='../login.php'</script>";
 	}
 
     if(isset($_SESSION['login_role'])){
         if($_SESSION['login_role'] != 'agen')
-		    echo "<script language=javascript>document.location.href='../index.php'</script>";
+		    echo "<script language=javascript>document.location.href='../login.php'</script>";
 	}
 
 
@@ -132,7 +132,7 @@
                                                 <div class="text-center" style="margin-bottom: 34px;">
                                                     <input type="hidden" name="no_nota" value="<?php echo $no_nota;?>" />
                                                     <button type="submit" name="tambah" value="tambah" class="btn btn-warning btn-fill btn-wd" style="margin-right: 8px;">Tambah Lagi Transaksi Cucian</button>
-                                                    <button type="submit" name="selesai" value="selesai" class="btn btn-info btn-fill btn-wd">Ini yang Terakhir</button>
+                                                    <button type="submit" name="selesai" value="selesai" class="btn btn-info btn-fill btn-wd">Submit Data</button>
                                                 </div>
                                                 <div class="clearfix"></div>
                                             </div>

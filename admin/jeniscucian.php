@@ -2,12 +2,12 @@
 	require "../php/connection.php";
     session_start();
     if(!isset($_SESSION['login_role'])){
-		echo "<script language=javascript>document.location.href='../index.php'</script>";
+		echo "<script language=javascript>document.location.href='../login.php'</script>";
 	}
 
     if(isset($_SESSION['login_role'])){
         if($_SESSION['login_role'] != 'admin')
-		    echo "<script language=javascript>document.location.href='../index.php'</script>";
+		    echo "<script language=javascript>document.location.href='../login.php'</script>";
 	}
 ?>
     <!doctype html>
