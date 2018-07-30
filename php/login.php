@@ -12,7 +12,7 @@
 		$thereIsAUser = mysqli_num_rows($query);
 		if($thereIsAUser == 0){
 			echo "<script language=javascript>alert('Username atau Password Tidak Cocok');</script>";
-			echo "<script language=javascript>document.location.href='../index.php'</script>";
+			echo "<script language=javascript>document.location.href='../login.php'</script>";
 			mysqli_close($connection);
 		}else{
 			$result = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -25,7 +25,7 @@
 					$thereIsAnAdmin = mysqli_num_rows($query);
 					if($thereIsAnAdmin == 0){
 						echo "<script language=javascript>alert('Data Admin tidak Ditemukan');</script>";
-						echo "<script language=javascript>document.location.href='../index.php'</script>";
+						echo "<script language=javascript>document.location.href='../login.php'</script>";
 						mysqli_close($connection);
 					}else {
 						$_SESSION['login_role'] = $login_role;
@@ -36,7 +36,7 @@
 					}
 				}else {
 					echo "<script language=javascript>alert('Terjadi Kesalahan Saat Login');</script>";
-					echo "<script language=javascript>document.location.href='../index.php'</script>";
+					echo "<script language=javascript>document.location.href='../login.php'</script>";
 				}
 			} else if($login_role === "agen") {
 				$strQuery = "SELECT * FROM agen WHERE agen_id = '$login_id'";
@@ -46,7 +46,7 @@
 					$result = mysqli_fetch_array($query, MYSQLI_ASSOC);
 					if($thereIsAnAgen == 0 || $result['agen_deleted'] == 'true'){
 						echo "<script language=javascript>alert('Data Agen tidak Ditemukan');</script>";
-						echo "<script language=javascript>document.location.href='../index.php'</script>";
+						echo "<script language=javascript>document.location.href='../login.php'</script>";
 						mysqli_close($connection);
 					}else {
 						$_SESSION['login_role'] = $login_role;
@@ -56,14 +56,14 @@
 					}
 				}else {
 					echo "<script language=javascript>alert('Terjadi Kesalahan Saat Login');</script>";
-					echo "<script language=javascript>document.location.href='../index.php'</script>";
+					echo "<script language=javascript>document.location.href='../login.php'</script>";
 				}
 			}
 			mysqli_close($connection);
 		}
 	}else {
 		echo "<script language=javascript>alert('Terjadi Kesalahan!');</script>";
-		echo "<script language=javascript>document.location.href='../index.php'</script>";
+		echo "<script language=javascript>document.location.href='../login.php'</script>";
 		mysqli_close($connection);
 	}
 ?>
