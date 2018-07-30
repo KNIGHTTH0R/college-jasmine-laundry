@@ -72,7 +72,6 @@
                                                     WHERE n.nota_id = $no_nota AND n.nota_deleted = 'false'";
                                                     $query = mysqli_query($connection, $strQuery);
                                                     if($query) {
-                                                        $i = 0;
                                                         while($result = mysqli_fetch_assoc($query)){
                                                             echo "<tr>";
                                                             echo "<td>$result[nota_id]</td>";
@@ -92,7 +91,6 @@
                                                             echo "<td>$total</td>";
                                                             echo "<td>$result[nota_status]</td>";
                                                             echo "</tr>";
-                                                            $i++;
                                                         }
                                                     }
                                                 ?>
@@ -124,7 +122,6 @@
                                                     WHERE njc.nota_id = $no_nota AND n.nota_deleted = 'false'";
                                                     $query = mysqli_query($connection, $strQuery);
                                                     if ($query) {
-                                                        $i = 0;
                                                         while($result = mysqli_fetch_assoc($query)){
                                                             echo "<tr>";
                                                             echo "<td>$result[jeniscucian_nama]</td>";
@@ -132,7 +129,6 @@
                                                             echo "<td>$result[nota_jeniscucian_jumlah]</td>";
                                                             echo "<td>$result[nota_jeniscucian_subtotal]</td>";
                                                             echo "</tr>";
-                                                            $i++;
                                                         }
                                                     }
                                                 ?>
