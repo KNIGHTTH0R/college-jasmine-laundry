@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28 Jul 2018 pada 14.39
+-- Generation Time: 30 Jul 2018 pada 17.14
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -101,7 +101,27 @@ CREATE TABLE `jeniscucian` (
 --
 
 INSERT INTO `jeniscucian` (`jeniscucian_id`, `jeniscucian_nama`, `jeniscucian_harga`, `jeniscucian_deleted`) VALUES
-(1, 'Cover Jas', 5000, 'false');
+(1, 'Cover Jas', 5000, 'false'),
+(2, 'Selimut tipis', 17500, 'false'),
+(3, 'T-shirt', 4500, 'false'),
+(4, 'Toga', 24000, 'false'),
+(5, 'Tikar biasa', 27500, 'false'),
+(6, 'Tenda', 30500, 'false'),
+(7, 'Tas ransel', 27500, 'false'),
+(8, 'Tas kulit', 69000, 'false'),
+(9, 'Selendang', 6000, 'false'),
+(10, 'Jas', 17500, 'false'),
+(11, 'Dasi', 11000, 'false'),
+(12, 'Boneka bantal', 14000, 'false'),
+(13, 'Bantal', 15500, 'false'),
+(14, 'Sajadah', 10000, 'false'),
+(15, 'Rompi', 13000, 'false'),
+(16, 'Peci', 9500, 'false'),
+(17, 'Matras springbed single', 27500, 'false'),
+(18, 'Kerudung', 9500, 'false'),
+(19, 'Kemeja', 14500, 'false'),
+(20, 'Kaos kaki	', 6500, 'false'),
+(21, 'Baju lab', 11000, 'false');
 
 -- --------------------------------------------------------
 
@@ -144,7 +164,11 @@ CREATE TABLE `nota_jeniscucian` (
 
 INSERT INTO `nota_jeniscucian` (`nota_jeniscucian_id`, `nota_jeniscucian_jumlah`, `nota_jeniscucian_subtotal`, `nota_id`, `jeniscucian_id`) VALUES
 (1, 1, 5000, 1, 1),
-(2, 1, 5000, 2, 1);
+(2, 1, 5000, 2, 1),
+(3, 2, 9000, 3, 3),
+(4, 1, 24000, 3, 4),
+(6, 1, 69000, 4, 8),
+(8, 1, 17500, 5, 10);
 
 -- --------------------------------------------------------
 
@@ -166,7 +190,10 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`pelanggan_id`, `pelanggan_nama`, `pelanggan_alamat`, `pelanggan_notelp`, `pelanggan_deleted`, `agen_id`) VALUES
-(1, 'Taufiq', 'Jl. Antapani No. 1', '087887865456', 'false', 2);
+(1, 'Taufiq', 'Jl. Antapani No. 1', '087887865456', 'false', 2),
+(2, 'Benna', 'Jl. Antapani No. 4', '087382737282', 'false', 2),
+(3, 'Firman', 'Jl. Antapani no.3', '08948394383', 'false', 2),
+(4, 'Darmawan', 'Jl. dipatiukur no 119', '0841738132121', 'false', 2);
 
 -- --------------------------------------------------------
 
@@ -189,7 +216,10 @@ CREATE TABLE `transaksi` (
 
 INSERT INTO `transaksi` (`nota_id`, `nota_tgl_masuk`, `nota_tgl_selesai`, `nota_status`, `nota_deleted`, `pelanggan_id`) VALUES
 (1, '2018-07-28', '2018-07-28', 'Belum Bayar', 'false', 1),
-(2, '2018-07-28', '2018-07-28', 'Belum Bayar', 'false', 1);
+(2, '2018-07-28', '2018-07-28', 'Belum Bayar', 'true', 1),
+(3, '2018-07-28', '2018-07-28', 'Sudah Bayar', 'false', 2),
+(4, '2018-07-30', '2018-07-30', 'Sudah Bayar', 'false', 3),
+(5, '2018-07-30', '2018-07-30', 'Belum Bayar', 'false', 4);
 
 --
 -- Indexes for dumped tables
@@ -250,7 +280,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `jeniscucian`
 --
 ALTER TABLE `jeniscucian`
-  MODIFY `jeniscucian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `jeniscucian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -262,19 +292,19 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `nota_jeniscucian`
 --
 ALTER TABLE `nota_jeniscucian`
-  MODIFY `nota_jeniscucian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `nota_jeniscucian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `pelanggan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `pelanggan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `nota_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `nota_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

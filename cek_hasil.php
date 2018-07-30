@@ -109,12 +109,13 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <th>Jenis Cucian</th>
+                                        <th>Harga Satuan</th>
                                         <th>Jumlah</th>
                                         <th>Subtotal</th>
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $statement = $connection->prepare("SELECT njc.nota_jeniscucian_id, jc.jeniscucian_nama, njc.nota_jeniscucian_jumlah, njc.nota_jeniscucian_subtotal
+                                            $statement = $connection->prepare("SELECT njc.nota_jeniscucian_id, jc.jeniscucian_nama, jc.jeniscucian_harga, njc.nota_jeniscucian_jumlah, njc.nota_jeniscucian_subtotal
                                                                                 FROM nota_jeniscucian njc
                                                                                 INNER JOIN jeniscucian jc ON njc.jeniscucian_id = jc.jeniscucian_id
                                                                                 INNER JOIN transaksi n ON njc.nota_id = n.nota_id
@@ -125,6 +126,7 @@
                                             while($row = mysqli_fetch_assoc($result)){
                                                 echo "<tr>";
                                                 echo "<td>$row[jeniscucian_nama]</td>";
+                                                echo "<td>$row[jeniscucian_harga]</td>";
                                                 echo "<td>$row[nota_jeniscucian_jumlah]</td>";
                                                 echo "<td>$row[nota_jeniscucian_subtotal]</td>";
                                                 echo "</tr>";
