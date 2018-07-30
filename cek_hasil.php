@@ -1,6 +1,6 @@
 <?php
     require('php/connection.php');
-    if(isset($_GET['no_nota'])) {
+    if(isset($_GET['no_nota']) && is_numeric($_GET['no_nota'])) {
         $no_nota = $_GET['no_nota'];
 ?>
 <!DOCTYPE html>
